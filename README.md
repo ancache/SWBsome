@@ -16,7 +16,8 @@ SWBsome
 - stores new dataset to 'swbsomesEZRA.pkl'
 - also writes .param files for Ezra import
 
-/// sph-files.py & make-mp3.sh
-- used to convert to mp3s those NIST Sphere files in the Switchboard where EZRA targets were found 
-- edit sph-files.py with the correct path to Switchboard on your computer, then run to produce a list of filenames (without .sph extension) and NXT terminal ID extensions (appended to filenames to allow multiple hits per mp3 file to be uploaded to EZRA): sph_files.txt
-- make-mp3.sh requires: sph2pipe (from LDC website) and Lame. It searches for the files in sph_files.txt, converts to wav, pipes output to lame for mp3 encoding, and saves as filename+NXTterminalID+.mp3
+/// sph-files.py & make-mp3s(2).sh
+- sph-files.py outputs 2 txt files, to be used to run the shell scripts. File 1 is "hits_start_end.txt", used by make-mp3s2.sh. File 2 is "sph_files.xt", used by make-mp3s.sh. sph-files.py needs to be updated with the correct path to Switchboard on your computer.
+- make-mp3s.sh - used to convert to mp3s those NIST Sphere files in the Switchboard where EZRA targets were found.
+- make-mp3s2.sh - both converts Sphere files to mp3 files, and replaces certain segments (locations of "some") with noise.
+- make-mp3s(2).sh require: sph2pipe (from LDC website) and Lame. Additionally, make-mp3s2.sh requires SoX.
